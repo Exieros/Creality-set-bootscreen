@@ -34,7 +34,7 @@ class PrinterUploader:
         # Пробуем подключить SFTP
         try:
             # ОТЛАДКА: Раскомментируйте для теста fallback на SCP
-            raise Exception("SFTP not available")
+            #raise Exception("SFTP not available")
             self.sftp = self.ssh.open_sftp()
         except Exception as e:
             print(f"⚠ SFTP недоступен (голый root без entwares) ({e}), используется fallback на SCP")
