@@ -163,7 +163,14 @@ class PrinterUploader:
             total_files = sum([len(files) for _, _, files in os.walk(export_dir)])
             
             # Загружаем файлы с прогресс-баром
-            with tqdm(total=total_files, desc='Загрузка на принтер', unit='файл') as pbar:
+            with tqdm(
+                total=total_files, 
+                desc='Загрузка на принтер', 
+                unit='файл',
+                ncols=80,  # Фиксированная ширина прогресс-бара
+                mininterval=0.5,  # Минимальный интервал обновления (0.5 сек)
+                smoothing=0.1  # Сглаживание скорости
+            ) as pbar:
                 uploaded_files = self.upload_directory(export_dir, remote_dir, pbar)
             
             message = f"Успешно загружено {len(uploaded_files)} файлов"
