@@ -134,7 +134,8 @@ def export_video(
             return False
     
     duration = end_time - start_time
-    frame_count = int(duration * fps)
+    # Вычитаем небольшой буфер (1 кадр) чтобы избежать чёрного кадра в конце
+    frame_count = int(duration * fps) - 1
     
     logger.info(f"Видео: {os.path.basename(video_path)}")
     logger.info(f"Экспорт: {start_time:.2f}s - {end_time:.2f}s ({duration:.2f}s)")

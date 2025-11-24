@@ -2,3 +2,5 @@ export
 __pycache__
 *.dll
 *.exe
+*ffmpeg*
+*.mp4
